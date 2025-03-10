@@ -10,6 +10,13 @@ class Quiz extends Model
     use HasFactory;
 
     protected $fillable =[
-
+        'user_id',
+        'topic',
+        'subtopic',
+        'number_of_question'
     ];
+
+    public function questions(){
+        return $this->belongsTo(Question::class);
+    }
 }
