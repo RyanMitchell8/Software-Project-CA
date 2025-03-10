@@ -1,3 +1,4 @@
+<html lang="en">
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ route('dashboard') }}">
@@ -43,3 +44,41 @@
         </div>
     </div>
 </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        td, th {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Questions</h2>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Topic</th>
+                    <th>Sub-Topic</th>
+                    <th>Question</th>
+                    <th>Correct Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($questions as $question)
+                <tr>
+                    <td class="fw-bold">{{ $question->topic }}</td>
+                    <td class="text-secondary">{{ $question->sub_topic }}</td>
+                    <td class="text-wrap" style="max-width: 300px;">{{ $question->question_text }}</td>
+                    <td class="text-success fw-semibold">{{ $question->correct_answer }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
