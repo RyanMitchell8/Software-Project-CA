@@ -6,6 +6,9 @@
         <a class="navbar-brand" href="{{ route('questions.index') }}">
             {{ __('Questions') }}
         </a>
+        <a class="navbar-brand" href="{{ route('quiz.show', ['id' => $quiz->id]) }}">
+            {{ __('Quiz') }}
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuizController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,6 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
+    Route::get('/quiz/{id}', [QuizController::class, 'show'])->name('quiz.show');
+    Route::post('/quiz/{id}', [QuizController::class, 'submit'])->name('quiz.submit');
 });
 
 require __DIR__.'/auth.php';

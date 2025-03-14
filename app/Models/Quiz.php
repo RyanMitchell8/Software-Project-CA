@@ -16,7 +16,13 @@ class Quiz extends Model
         'number_of_question'
     ];
 
-    public function questions(){
-        return $this->belongsTo(Question::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class, 'question_quiz');
     }
 }

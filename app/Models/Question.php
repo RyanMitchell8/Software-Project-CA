@@ -16,7 +16,8 @@ class Question extends Model
         'correct_answer'
     ];
 
-    public function quizzes(){
-        return $this->belongsTo(Quiz::class);
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 }

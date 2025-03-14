@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Quiz;
 use Illuminate\Http\Request;
+use App\Models\Quiz;
+use App\Models\Question;
+use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
@@ -34,11 +36,42 @@ class QuizController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Quiz $quiz)
+    public function show($id)
     {
-        //
+        // Fetch a single quiz by ID
+        $quiz = Quiz::findOrFail($id);
+
+        // Pass the quiz to the view
+        return view('quizzes.show', compact('quiz'));
     }
 
+
+    public function submit(Request $request, $quiz_id)
+    {
+        $quiz = Quiz::findOrFail($quiz_id);
+        $questions = $quiz->questions()->get();
+        $user_id = Auth::id();
+
+        $score = 0;
+
+        foreach ($questions as $question) {
+            $selected_answer = $request->input("answers.{$question->id}");
+            $is_correct = $selected_answer == $question->correct_answer ? 1 : 0;
+
+            StudentAnswer::create([
+                'user_id' => $user_id,
+                'question_id' => $question->id,
+                'selected_answer' => $selected_answer,
+                'is_correct' => $is_correct,
+            ]);
+
+            if ($is_correct) {
+                $score++;
+            }
+        }
+
+        return view('quiz.result', compact('score', 'questions', 'quiz_id'));
+    }
     /**
      * Show the form for editing the specified resource.
      */
