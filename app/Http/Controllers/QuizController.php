@@ -14,8 +14,26 @@ class QuizController extends Controller
      */
     public function index()
     {
-        //
+        // Get all unique topics
+        $topics = \App\Models\Question::select('topic')->distinct()->pluck('topic');
+
+        // Get one random question per topic
+        $questions = collect();
+        foreach ($topics as $topic) {
+            $question = \App\Models\Question::where('topic', $topic)->inRandomOrder()->first();
+            if ($question) {
+                $questions->push($question);
+            }
+        }
+
+        // Eager-load answers for each question
+        // $questions->load('answers');
+
+        // Pass data to the view
+        return view('quizzes.index', compact('questions'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -58,12 +76,12 @@ class QuizController extends Controller
             $selected_answer = $request->input("answers.{$question->id}");
             $is_correct = $selected_answer == $question->correct_answer ? 1 : 0;
 
-            StudentAnswer::create([
-                'user_id' => $user_id,
-                'question_id' => $question->id,
-                'selected_answer' => $selected_answer,
-                'is_correct' => $is_correct,
-            ]);
+            // StudentAnswer::create([
+            //     'user_id' => $user_id,
+            //     'question_id' => $question->id,
+            //     'selected_answer' => $selected_answer,
+            //     'is_correct' => $is_correct,
+            // ]);
 
             if ($is_correct) {
                 $score++;

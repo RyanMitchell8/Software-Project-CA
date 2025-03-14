@@ -58,12 +58,11 @@
 
     <!-- Loop through quizzes and display them -->
     <div class="row">
-        @foreach ($quizzes as $quiz)
+        @foreach ($questions as $question)
             <div class="col-md-4">
                 <div class="card quiz-card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $quiz->name }}</h5>
-                        <p class="card-text">{{ $quiz->description }}</p>
+                        <h5 class="card-title">{{ $question.question_text }}</h5>
                         <a href="{{ route('quiz.show', $quiz->id) }}" class="btn btn-primary">Start Quiz</a>
                     </div>
                 </div>
