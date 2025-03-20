@@ -62,8 +62,8 @@
             <div class="col-md-4">
                 <div class="card quiz-card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $question.question_text }}</h5>
-                        <a href="{{ route('quiz.show', $quiz->id) }}" class="btn btn-primary">Start Quiz</a>
+                        <h5 class="card-title">{{ $question."question_text" }}</h5>
+                        <a href="{{ route('quiz.show', $question->quiz_id) }}" class="btn btn-primary">Start Quiz</a>
                     </div>
                 </div>
             </div>
