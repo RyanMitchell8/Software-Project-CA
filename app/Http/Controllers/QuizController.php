@@ -20,6 +20,7 @@ class QuizController extends Controller
         // Get one random question per topic
         $questions = collect();
         foreach ($topics as $topic) {
+            
             $question = \App\Models\Question::where('topic', $topic)->inRandomOrder()->first();
             if ($question) {
                 $questions->push($question);
@@ -32,7 +33,6 @@ class QuizController extends Controller
         // Pass data to the view
         return view('quizzes.index', compact('questions'));
     }
-
 
 
     /**
@@ -48,7 +48,22 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+        $request->validate([
+            'topic' => 'required|string|max:255',
+            'subtopic' => 'required|string|max:255',
+        ]);
+
+           $quiz = Quiz::create([
+                'user_id' => 1,
+                'topic' => $request->topic,
+                'subtopic' => $request->subtopic,
+                'number_of_questions' => 10,
+                'number_questions_correct' => 0, // Default score
+           ]);
+
+           return redirect()->route('quiz.show', $quiz->id)->with('success', 'Quiz started successfully!');    
     }
 
     /**

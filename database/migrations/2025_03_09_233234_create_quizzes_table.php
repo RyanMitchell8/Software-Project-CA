@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('topic');
             $table->string('subtopic')->nullable();
             $table->integer('number_of_questions');
+            $table->integer('number_questions_correct');
             $table->timestamps();
         });
     }

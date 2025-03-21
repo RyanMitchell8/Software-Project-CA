@@ -57,13 +57,37 @@
     <h2>Available Quizzes</h2>
 
     <!-- Loop through quizzes and display them -->
-    <div class="row">
+    <!-- <div class="row">
         @foreach ($questions as $question)
             <div class="col-md-4">
                 <div class="card quiz-card">
                     <div class="card-body">
                         <h5 class="card-title">{{ $question."question_text" }}</h5>
-                        <a href="{{ route('quiz.show', $question->quiz_id) }}" class="btn btn-primary">Start Quiz</a>
+                        <a href="{{ route('quiz.show', ['id' => 1]) }}" class="btn btn-primary">Start Quiz</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div> -->
+
+<div class="row">
+        @foreach ($questions as $question)
+            <div class="col-md-4">
+                <div class="card quiz-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $question->topic}} </h5>
+                        <h5 class="card-title"> {{$question->subtopic}}</h5>
+                        <h5 class="card-title"> {{$question->question_text}}</h5>
+                        
+                       
+                        <!-- Form to Submit the Quiz Start -->
+                        <form action="{{ route('quiz.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="topic" value="{{  $question->topic }}">
+                            <input type="hidden" name="subtopic" value="{{  $question->subtopic }}">
+                            <button type="submit" class="btn btn-primary">Start Quiz</button>
+                        </form>
                     </div>
                 </div>
             </div>

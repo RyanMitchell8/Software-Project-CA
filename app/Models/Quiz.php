@@ -13,7 +13,8 @@ class Quiz extends Model
         'user_id',
         'topic',
         'subtopic',
-        'number_of_question'
+        'number_of_questions',
+        'number_questions_correct'
     ];
 
     public function user()
