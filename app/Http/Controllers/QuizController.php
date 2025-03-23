@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\Question;
+use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
@@ -48,8 +49,6 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        
-
         $request->validate([
             'topic' => 'required|string|max:255',
             'subtopic' => 'required|string|max:255',
@@ -71,40 +70,64 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        // Fetch a single quiz by ID
-        $quiz = Quiz::findOrFail($id);
+    $quiz = Quiz::findOrFail($id);
 
-        // Pass the quiz to the view
-        return view('quizzes.show', compact('quiz'));
+    $questions = Question::where('topic', $quiz->topic)
+                         ->where('subtopic', $quiz->subtopic)
+                         ->inRandomOrder()
+                         ->take($quiz->number_of_questions)
+                         ->get();
+
+    return view('quizzes.show', compact('quiz', 'questions'));
     }
 
 
-    public function submit(Request $request, $quiz_id)
+
+    public function submit(Request $request, $id)
     {
-        $quiz = Quiz::findOrFail($quiz_id);
-        $questions = $quiz->questions()->get();
-        $user_id = Auth::id();
+    // 1. Find the quiz
+    $quiz = Quiz::findOrFail($id);
 
-        $score = 0;
+    // 2. Re-fetch the same 10 questions based on topic & subtopic
+    $questions = Question::where('topic', $quiz->topic)
+                         ->where('subtopic', $quiz->subtopic)
+                         ->inRandomOrder()
+                         ->take($quiz->number_of_questions)
+                         ->get();
 
-        foreach ($questions as $question) {
-            $selected_answer = $request->input("answers.{$question->id}");
-            $is_correct = $selected_answer == $question->correct_answer ? 1 : 0;
+    // 3. Check user's answers
+    $correctAnswers = 0;
 
-            // StudentAnswer::create([
-            //     'user_id' => $user_id,
-            //     'question_id' => $question->id,
-            //     'selected_answer' => $selected_answer,
-            //     'is_correct' => $is_correct,
-            // ]);
+foreach ($questions as $question) {
+    $selectedAnswerId = $request->input("answers.{$question->id}");
 
-            if ($is_correct) {
-                $score++;
-            }
+    if ($selectedAnswerId) {
+        $selectedAnswer = \App\Models\Answer::find($selectedAnswerId);
+
+        if (
+            $selectedAnswer &&
+            strtolower(trim($selectedAnswer->answer_text)) === strtolower(trim($question->correct_answer))
+        ) {
+            $correctAnswers++;
         }
-
-        return view('quiz.result', compact('score', 'questions', 'quiz_id'));
     }
+}
+
+
+    // 4. Update quiz score
+    $quiz->update([
+        'number_questions_correct' => $correctAnswers,
+    ]);
+
+    //dd($correctAnswers);
+
+
+    // 5. Redirect or return result
+    return redirect()->route('quiz.index')
+        ->with('success', "You scored {$correctAnswers}/{$quiz->number_of_questions}!");
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */

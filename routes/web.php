@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
     Route::get('/quiz/{id}', [QuizController::class, 'show'])->name('quiz.show');
+    Route::get('/quiz', [QuizController::class, 'show'])->name('quiz.show');
     Route::post('/quiz/{id}', [QuizController::class, 'submit'])->name('quiz.submit');
     Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
     Route::post('/quiz', [QuizController::class, 'store'])->name('quiz.store');
