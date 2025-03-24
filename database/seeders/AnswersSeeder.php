@@ -117,6 +117,14 @@ class AnswersSeeder extends Seeder
                 'King George III', 'King Henry VIII', 'Queen Elizabeth I',
                 'Santa Maria', 'Titanic', 'Beagle',
             ],
+
+            'Business' => [
+                'Steve Jobs', 'Adidas', 'eBay',
+                'Cross-selling', 'To increase website traffic without improving ranking',
+                'Microsoft', 'International Private Offering', 'Chase Bank',
+                'Freud\'s Theory of Personality', 'Henry Ford',
+            ],
+
         ];
 
         // Get possible incorrect answers based on the topic

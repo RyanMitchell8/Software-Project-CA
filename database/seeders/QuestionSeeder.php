@@ -87,6 +87,19 @@ class QuestionSeeder extends Seeder
             ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'What was the primary language spoken in Ancient Rome?', 'correct_answer' => 'Latin', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
             ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'Which civilization is known for its pyramids in Central America?', 'correct_answer' => 'Mayans', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
             ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'What was the capital city of the ancient Egyptian civilization?', 'correct_answer' => 'Thebes', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+
+
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'Who is known as the founder of Microsoft?', 'correct_answer' => 'Bill Gates', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'Which company is known for its "Just Do It" slogan?', 'correct_answer' => 'Nike', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'Which online retailer was founded by Jeff Bezos in 1994?', 'correct_answer' => 'Amazon', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'What is the term for the strategy of selling more expensive versions of a product to customers who are willing to pay more?', 'correct_answer' => 'Upselling', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'What is the main goal of SEO (Search Engine Optimization)?', 'correct_answer' => 'To improve a website\'s ranking in search engine results', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'Which company is known for its "Think Different" marketing campaign?', 'correct_answer' => 'Apple', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'What does "IPO" stand for in the context of business and finance?', 'correct_answer' => 'Initial Public Offering', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'Which financial institution is known for the creation of the first credit card?', 'correct_answer' => 'Bank of America', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'Which management theory is known for emphasizing the importance of employee motivation and needs?', 'correct_answer' => 'Maslow\'s Hierarchy of Needs', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+            ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'Who is known as the father of modern management?', 'correct_answer' => 'Peter Drucker', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
+
         ]);
     }
 }

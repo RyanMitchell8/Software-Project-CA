@@ -14,9 +14,6 @@
         <a class="navbar-brand" href="{{ route('dashboard') }}">
             {{ __('Dashboard') }}
         </a>
-        <a class="navbar-brand" href="{{ route('questions.index') }}">
-            {{ __('Questions') }}
-        </a>
         <a class="navbar-brand" href="{{ route('quiz.index') }}">
             {{ __('Quiz') }}
         </a>
@@ -56,21 +53,6 @@
 <div class="container mt-5">
     <h2>Available Quizzes</h2>
 
-    <!-- Loop through quizzes and display them -->
-    <!-- <div class="row">
-        @foreach ($questions as $question)
-            <div class="col-md-4">
-                <div class="card quiz-card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $question."question_text" }}</h5>
-                        <a href="{{ route('quiz.show', ['id' => 1]) }}" class="btn btn-primary">Start Quiz</a>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-</div> -->
-
 <div class="row">
         @foreach ($questions as $question)
             <div class="col-md-4">
@@ -79,8 +61,6 @@
                         <h5 class="card-title">{{ $question->topic}} </h5>
                         <h5 class="card-title"> {{$question->subtopic}}</h5>
                         <h5 class="card-title"> {{$question->question_text}}</h5>
-                        
-                       
                         <!-- Form to Submit the Quiz Start -->
                         <form action="{{ route('quiz.store') }}" method="POST">
                             @csrf
@@ -94,6 +74,7 @@
         @endforeach
     </div>
 </div>
+
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

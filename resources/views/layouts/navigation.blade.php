@@ -3,9 +3,6 @@
         <a class="navbar-brand" href="{{ route('dashboard') }}">
             {{ __('Dashboard') }}
         </a>
-        <a class="navbar-brand" href="{{ route('questions.index') }}">
-            {{ __('Questions') }}
-        </a>
         <a class="navbar-brand" href="{{ route('quiz.index') }}">
             {{ __('Quiz') }}
         </a>
