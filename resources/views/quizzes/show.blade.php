@@ -1,49 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Quizzes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-4">
-    <h2>{{ $quiz->topic }} - {{ $quiz->subtopic }}</h2>
+<div class="container mt-5">
+    <h2 class="text-center fw-bold text-primary">{{ $quiz->topic }} - {{ $quiz->subtopic }}</h2>
 
-    <form action="{{ route('quiz.submit', $quiz->id) }}" method="POST">
-        @csrf
-        <ul class="list-group">
-            @foreach($questions as $question)
-                <li class="list-group-item">
-                    <strong>{{ $loop->iteration }}. {{ $question->question_text }}</strong>
-
+    <div class="card shadow-lg p-4 mt-4">
+        <form action="{{ route('quiz.submit', $quiz->id) }}" method="POST">
+            @csrf
+            <ul class="list-group list-group-flush">
+                @foreach($questions as $question)
                     @php
-                        $answers = $question->answers->shuffle()->take(3);
+                        $answers = $question->answers->shuffle();
                     @endphp
 
-                    @foreach($answers as $answer)
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]" 
-                                value="{{ $answer->id }}" required>
-                            <label class="form-check-label">
-                                {{ $answer->answer_text }}
-                            </label>
-                        </div>
-                    @endforeach
-                </li>
-            @endforeach
-        </ul>
-        
-        <button type="submit" class="btn btn-primary mt-3">Submit Quiz</button>
-    </form>
+                    <li class="list-group-item py-4">
+                        <strong class="d-block">{{ $loop->iteration }}. {{ $question->question_text }}</strong>
+                        
+                        @foreach($answers as $answer)
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="radio" name="answers[{{ $question->id }}]" 
+                                    value="{{ $answer->id }}" required>
+                                <label class="form-check-label">
+                                    {{ $answer->answer_text }}
+                                </label>
+                            </div>
+                        @endforeach
+                    </li>
+                @endforeach
+            </ul>
+            
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-lg btn-success fw-bold px-5">✅ Submit Quiz</button>
+            </div>
+        </form>
+    </div>
 </div>
 @endsection
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
