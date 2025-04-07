@@ -76,18 +76,6 @@ class QuestionSeeder extends Seeder
             ['topic' => 'History', 'subtopic' => 'Famous Events', 'question_text' => 'What year did the American Civil War end?', 'correct_answer' => '1865', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp, 'subquestion_no' =>8,],
             ['topic' => 'History', 'subtopic' => 'Famous Events', 'question_text' => 'Who was the first female Prime Minister of the United Kingdom?', 'correct_answer' => 'Margaret Thatcher', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp, 'subquestion_no' =>9,],
 
-            // Technology (10 Questions)
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'Which civilization built the pyramids?', 'correct_answer' => 'Egyptians', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'Which ancient civilization developed the first written language?', 'correct_answer' => 'Sumerians', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'What ancient civilization is known for its gladiators?', 'correct_answer' => 'Romans', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'Who was the king of the ancient Macedonian Empire?', 'correct_answer' => 'Alexander the Great', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'Which civilization built Machu Picchu?', 'correct_answer' => 'Incas', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'In which civilization was the wheel first used?', 'correct_answer' => 'Mesopotamians', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'Which ancient civilization is credited with inventing the concept of democracy?', 'correct_answer' => 'Ancient Greeks', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'What was the primary language spoken in Ancient Rome?', 'correct_answer' => 'Latin', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'Which civilization is known for its pyramids in Central America?', 'correct_answer' => 'Mayans', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-            ['topic' => 'History', 'subtopic' => 'Ancient Civilizations', 'question_text' => 'What was the capital city of the ancient Egyptian civilization?', 'correct_answer' => 'Thebes', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
-
 
             ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'Who is known as the founder of Microsoft?', 'correct_answer' => 'Bill Gates', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
             ['topic' => 'Business', 'subtopic' => 'Business Fundamentals', 'question_text' => 'Which company is known for its "Just Do It" slogan?', 'correct_answer' => 'Nike', 'created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp],
