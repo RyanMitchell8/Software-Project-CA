@@ -14,7 +14,8 @@ class Question extends Model
         'topic',
         'subtopic',
         'question_text',
-        'correct_answer'
+        'correct_answer',
+         'subquestion_no'
     ];
 
     public function quiz()

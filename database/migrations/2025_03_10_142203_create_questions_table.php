@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('question_text');
             $table->string('correct_answer');
             $table->timestamps();
+            $table->integer('subquestion_no');
         });
     }
 
